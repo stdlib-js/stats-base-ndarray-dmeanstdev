@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,12 +16,17 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { float64ndarray, typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Compute the mean and standard deviation of a one-dimensional double-precision floating-point ndarray.
+* Computes the mean and standard deviation of a one-dimensional double-precision floating-point ndarray.
 *
-* @module @stdlib/stats-base-ndarray-dmeanstdev
+* @param arrays - array-like object containing an input ndarray, an output ndarray, and ndarray containing the degrees of freedom adjustment
+* @returns output ndarray
 *
 * @example
 * var Float64Array = require( '@stdlib/array-float64' );
@@ -43,12 +48,9 @@
 * var v = dmeanstdev( [ x, out, correction ] );
 * // returns <ndarray>[ ~1.25, ~2.5 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function dmeanstdev<T extends typedndarray<number> = typedndarray<number>>( arrays: [ float64ndarray, float64ndarray, T ] ): float64ndarray;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = dmeanstdev;
