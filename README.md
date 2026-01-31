@@ -110,7 +110,7 @@ The use of the term `n-1` is commonly referred to as Bessel's correction. Note, 
 ## Usage
 
 ```javascript
-import dmeanstdev from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@deno/mod.js';
+import dmeanstdev from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@v0.1.0-deno/mod.js';
 ```
 
 #### dmeanstdev( arrays )
@@ -172,7 +172,7 @@ import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@de
 import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@deno/mod.js';
 import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ctor@deno/mod.js';
 import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@deno/mod.js';
-import dmeanstdev from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@deno/mod.js';
+import dmeanstdev from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@v0.1.0-deno/mod.js';
 
 var opts = {
     'dtype': 'float64'
