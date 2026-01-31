@@ -103,38 +103,32 @@ The use of the term `n-1` is commonly referred to as Bessel's correction. Note, 
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-ndarray-dmeanstdev
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-dmeanstdev = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var dmeanstdev = require( 'path/to/vendor/umd/stats-base-ndarray-dmeanstdev/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.dmeanstdev;
-})();
-</script>
+var dmeanstdev = require( '@stdlib/stats-base-ndarray-dmeanstdev' );
 ```
 
 #### dmeanstdev( arrays )
@@ -190,18 +184,13 @@ The function has the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ctor@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
+var Float64Array = require( '@stdlib/array-float64' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
+var ndarray = require( '@stdlib/ndarray-base-ctor' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var dmeanstdev = require( '@stdlib/stats-base-ndarray-dmeanstdev' );
 
 var opts = {
     'dtype': 'float64'
@@ -217,11 +206,6 @@ var correction = scalar2ndarray( 1.0, opts );
 
 var v = dmeanstdev( [ x, out, correction ] );
 console.log( ndarray2array( v ) );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -275,8 +259,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/stats-base-ndarray-dmeanstdev.svg
 [npm-url]: https://npmjs.org/package/@stdlib/stats-base-ndarray-dmeanstdev
 
-[test-image]: https://github.com/stdlib-js/stats-base-ndarray-dmeanstdev/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/stats-base-ndarray-dmeanstdev/actions/workflows/test.yml?query=branch:main
+[test-image]: https://github.com/stdlib-js/stats-base-ndarray-dmeanstdev/actions/workflows/test.yml/badge.svg?branch=v0.1.0
+[test-url]: https://github.com/stdlib-js/stats-base-ndarray-dmeanstdev/actions/workflows/test.yml?query=branch:v0.1.0
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/stats-base-ndarray-dmeanstdev/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/stats-base-ndarray-dmeanstdev?branch=main
