@@ -103,14 +103,32 @@ The use of the term `n-1` is commonly referred to as Bessel's correction. Note, 
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-ndarray-dmeanstdev
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import dmeanstdev from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@esm/index.mjs';
+var dmeanstdev = require( '@stdlib/stats-base-ndarray-dmeanstdev' );
 ```
 
 #### dmeanstdev( arrays )
@@ -118,18 +136,15 @@ import dmeanstdev from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray
 Computes the [arithmetic mean][arithmetic-mean] and [standard deviation][standard-deviation] of a one-dimensional double-precision floating-point ndarray.
 
 ```javascript
-import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
-import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@esm/index.mjs';
-import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ctor@esm/index.mjs';
+var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
 
 var opts = {
     'dtype': 'float64'
 };
 
-var xbuf = new Float64Array( [ 1.0, 3.0, 4.0, 2.0 ] );
-var x = new ndarray( opts.dtype, xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
-
-var out = new ndarray( opts.dtype, new Float64Array( 2 ), [ 2 ], [ 1 ], 0, 'row-major' );
+var x = new Float64Vector( [ 1.0, 3.0, 4.0, 2.0 ] );
+var out = new Float64Vector( 2 );
 
 var correction = scalar2ndarray( 1.0, opts );
 
@@ -139,11 +154,11 @@ var v = dmeanstdev( [ x, out, correction ] );
 
 The function has the following parameters:
 
--   **arrays**: array-like object containing the following ndarrays in order:
+-   **arrays**: array-like object containing the following ndarrays:
 
-    1.  a one-dimensional input ndarray.
-    2.  a one-dimensional output ndarray to store the [mean][arithmetic-mean] and [standard deviation][standard-deviation].
-    3.  a zero-dimensional ndarray specifying the degrees of freedom adjustment. Setting this to a value other than `0` has the effect of adjusting the divisor during the calculation of the [standard deviation][standard-deviation] according to `N-c` where `c` corresponds to the provided degrees of freedom adjustment. When computing the [standard deviation][standard-deviation] of a population, setting this to `0` is the standard choice (i.e., the provided array contains data constituting an entire population). When computing the corrected sample [standard deviation][standard-deviation], setting this to `1` is the standard choice (i.e., the provided array contains data sampled from a larger population; this is commonly referred to as Bessel's correction).
+    -   a one-dimensional input ndarray.
+    -   a one-dimensional output ndarray to store the [mean][arithmetic-mean] and [standard deviation][standard-deviation].
+    -   a zero-dimensional ndarray specifying the degrees of freedom adjustment. Setting this to a value other than `0` has the effect of adjusting the divisor during the calculation of the [standard deviation][standard-deviation] according to `N-c` where `c` corresponds to the provided degrees of freedom adjustment. When computing the [standard deviation][standard-deviation] of a population, setting this to `0` is the standard choice (i.e., the provided array contains data constituting an entire population). When computing the corrected sample [standard deviation][standard-deviation], setting this to `1` is the standard choice (i.e., the provided array contains data sampled from a larger population; this is commonly referred to as Bessel's correction).
 
 </section>
 
@@ -166,37 +181,25 @@ The function has the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@esm/index.mjs';
-import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
-import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@esm/index.mjs';
-import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ctor@esm/index.mjs';
-import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
-import dmeanstdev from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dmeanstdev@esm/index.mjs';
+```javascript
+var discreteUniform = require( '@stdlib/random-discrete-uniform' );
+var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var dmeanstdev = require( '@stdlib/stats-base-ndarray-dmeanstdev' );
 
 var opts = {
     'dtype': 'float64'
 };
 
-var xbuf = discreteUniform( 10, -50, 50, opts );
-var x = new ndarray( opts.dtype, xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
+var x = discreteUniform( [ 10 ], -50, 50, opts );
 console.log( ndarray2array( x ) );
 
-var out = new ndarray( opts.dtype, new Float64Array( 2 ), [ 2 ], [ 1 ], 0, 'row-major' );
-
+var out = new Float64Vector( 2 );
 var correction = scalar2ndarray( 1.0, opts );
 
 var v = dmeanstdev( [ x, out, correction ] );
 console.log( ndarray2array( v ) );
-
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -220,7 +223,7 @@ console.log( ndarray2array( v ) );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
