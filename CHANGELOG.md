@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2026-05-10)
+## Unreleased (2026-06-05)
 
 <section class="commits">
 
@@ -12,6 +12,7 @@
 
 <details>
 
+-   [`8e32423`](https://github.com/stdlib-js/stdlib/commit/8e32423156316049de0700cfcb4d3da2b173f008) - **refactor:** align TypeScript declarations across stats packages [(#12512)](https://github.com/stdlib-js/stdlib/pull/12512) _(by Philipp Burckhardt)_
 -   [`ddc2020`](https://github.com/stdlib-js/stdlib/commit/ddc2020894f672547e4101425bf5f609dcabf634) - **chore:** modernize examples and benchmarks _(by Athan Reines)_
 
 </details>
@@ -24,9 +25,10 @@
 
 ### Contributors
 
-A total of 1 person contributed to this release. Thank you to this contributor:
+A total of 2 people contributed to this release. Thank you to the following contributors:
 
 -   Athan Reines
+-   Philipp Burckhardt
 
 </section>
 
